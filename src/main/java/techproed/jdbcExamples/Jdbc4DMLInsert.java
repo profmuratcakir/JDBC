@@ -23,9 +23,9 @@ public class Jdbc4DMLInsert {
 		  ekleyelim ve eklenen kaydi teyit icin sorgulayalim.
 		========================================================================*/ 
 		
-//		String q1 = "INSERT INTO bolumler VALUES(80, 'ARGE','ISTANBUL')";
-//		int s1 = st.executeUpdate(q1);
-//		System.out.println(s1 + " satir eklendi");
+		String q1 = "INSERT INTO bolumler VALUES(80, 'ARGE','ISTANBUL')";
+		int s1 = st.executeUpdate(q1);
+		System.out.println(s1 + " satir eklendi");
 		
 		ResultSet rs = st.executeQuery("SELECT * FROM bolumler");
         

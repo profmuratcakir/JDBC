@@ -22,8 +22,8 @@ public class Jdbc3DDL {
 	 	    
 	 	B) - execute() metodu hertur SQL ifadesiyle kullanibilen genel bir komuttur. 
 	 	   - execute(), Boolean bir deger dondurur. DDL islemlerin false dondururken, 
-	 	   - DML islemlerinde true deger dondurur. 
-	 	   - Ozellikle hangi tip SQL ifadesinin kullanilmasinin gerektiginin belli olmadigi 
+	 	     DML islemlerinde true deger dondurur. 
+	 	   - Ozellikle, hangi tip SQL ifadesinin kullanilmasinin gerektiginin belli olmadigi 
 	 	     durumlarda tercih edilmektedir.  
 	 	     
 	 	C) - executeUpdate() metodu ise INSERT, Update gibi DML islemlerinde yaygin kullanilir.
@@ -40,56 +40,62 @@ public class Jdbc3DDL {
 				         + " birim VARCHAR2(10),"
 				         + " maas NUMBER(5))";
 		
-		// 1.YONTEM (excute() metodu ile)
-//		boolean s1 = st.execute(createQuery); // false deger dondurecek (DDL)
-//		System.out.println("isciler tablosu olusturuldu " + s1);
+		// 1.YONTEM  - execute() metodu ile
+		boolean s1 = st.execute(createQuery);   // false deger dondurur. (DDL)
+		System.out.println("isciler tablosu olusturuldu " + s1);
 		
-//		st.execute(createQuery); 
-//		System.out.println("isciler tablosu olusturuldu..");
+		// execute() metodu DDL komutlarinda hep false deger dondurdugu icin 
+		// donus degerine bakmak gerekli degildir. Zaten komutun calismasi ile 
+		// ilgili bir sorun var ise SQL EXception olusacaktir.
 		
-		// 2.YONTEM (excuteUpdate() metodu ile)
-//		int s2 = st.executeUpdate(createQuery);  // DDL islemleri 0 degerini dondurur.
-//		System.out.println("isciler tablosu olusturuldu.." + s2);
+		st.execute(createQuery); 
+		System.out.println("isciler tablosu olusturuldu..");
 		
-//		st.executeUpdate(createQuery);  
-//		System.out.println("isciler tablosu olusturuldu..");
+		// 2.YONTEM - executeUpdate() metodu ile
+		int s2 = st.executeUpdate(createQuery);  // DDL islemleri 0 degerini dondurur.
+		System.out.println("isciler tablosu olusturuldu.." + s2);
+		
+		// executeUpdate() metodu da DDL komutlarinda hep 0 degeri dondurur.
+		// bu sebeple donus degerine bakmak gerekli degildir.
+		st.executeUpdate(createQuery);  
+		System.out.println("isciler tablosu olusturuldu..");
 		
 		/*======================================================================
 		  ORNEK2:isciler tablosunu kalici olarak siliniz 		
 		========================================================================*/
-//		String dropQuery1 = "DROP TABLE isciler PURGE";
-//		st.execute(dropQuery1);
-//		System.out.println("isciler tablosu silindi..");
+		String dropQuery1 = "DROP TABLE isciler PURGE";
+		st.execute(dropQuery1);
+		System.out.println("isciler tablosu silindi..");
 		
 		/*=======================================================================
 		  ORNEK3:isciler tablosuna yeni bir sutun {isim Varchar2(20)} ekleyiniz.   
 		========================================================================*/ 
-//		String alterQuery1 = "ALTER TABLE isciler ADD isim VARCHAR2(20)";
-//		st.executeUpdate(alterQuery1);
-//		System.out.println("isciler tablosuna isim sutunu eklendi..");
-//		
+		String alterQuery1 = "ALTER TABLE isciler ADD isim VARCHAR2(20)";
+		st.executeUpdate(alterQuery1);
+		System.out.println("isciler tablosuna isim sutunu eklendi..");
+		
 		/*=======================================================================
 		  ORNEK4:isciler tablosuna soyisim VARCHAR2(20) ve sehir VARCHAR2(10)) 
 		  adinda 2 yeni sutun ekleyiniz.  
 		========================================================================*/ 
-//		String alterQuery2 = "ALTER TABLE isciler"
-//				          + " ADD (soyisim VARCHAR2(20), sehir VARCHAR2(20))";
-//		st.execute(alterQuery2);
-//		System.out.println("isciler tablosuna soyisim ve sehir sutunu eklendi..");
+		String alterQuery2 = "ALTER TABLE isciler"
+				          + " ADD (soyisim VARCHAR2(20), sehir VARCHAR2(20))";
+		st.execute(alterQuery2);
+		System.out.println("isciler tablosuna soyisim ve sehir sutunu eklendi..");
 		
 		/*=======================================================================
 		  ORNEK5:isciler tablosundaki soyisim sutunu siliniz.
 		========================================================================*/ 
-//		String alterQuery3 = "ALTER TABLE isciler DROP COLUMN soyisim";
-//		st.execute(alterQuery3);
-//		System.out.println("isciler tablosundan soyisim sutununu silindi..");
-//		
+		String alterQuery3 = "ALTER TABLE isciler DROP COLUMN soyisim";
+		st.execute(alterQuery3);
+		System.out.println("isciler tablosundan soyisim sutununu silindi..");
+	
 		/*=======================================================================
 		  ORNEK6:isciler tablosunun adini calisanlar olarak degistiriniz.  
 		========================================================================*/
-//		String alterQuery4 = "ALTER TABLE isciler RENAME TO calisanlar";
-//		st.execute(alterQuery4);
-//		System.out.println("isciler tablosunun adi calisanlar olarak degismistir..");
+		String alterQuery4 = "ALTER TABLE isciler RENAME TO calisanlar";
+		st.execute(alterQuery4);
+		System.out.println("isciler tablosunun adi calisanlar olarak degismistir..");
 		
 		/*=======================================================================
 		  ORNEK7:calisanlar tablosunu siliniz.  
