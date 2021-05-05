@@ -32,10 +32,10 @@ public class Jdbc4DMLInsert {
         while(rs.next()) {
             System.out.println("Bölüm ID:" + rs.getInt("bolum_id")+" "+"Bölüm Isim:" + rs.getString("bolum_isim")+"\t"+"Konum:" + rs.getString("konum"));
         }
-               
+        
         /*=======================================================================
-		  ORNEK2: Bolumler tablosuna birden fazla yeni kayıt ekleyelim.
-		 ========================================================================*/ 
+          ORNEK2: Bolumler tablosuna birden fazla yeni kayıt ekleyelim.
+		========================================================================*/ 
         
         // 1.YONTEM
      	// -----------------------------------------------
