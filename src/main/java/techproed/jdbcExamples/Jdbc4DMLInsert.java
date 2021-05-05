@@ -33,20 +33,20 @@ public class Jdbc4DMLInsert {
             System.out.println("Bölüm ID:" + rs.getInt("bolum_id")+" "+"Bölüm Isim:" + rs.getString("bolum_isim")+"\t"+"Konum:" + rs.getString("konum"));
         }
                
-    	/*=======================================================================
+        /*=======================================================================
 		  ORNEK2: Bolumler tablosuna birden fazla yeni kayıt ekleyelim.
 		 ========================================================================*/ 
-        	// 1.YONTEM
-     		// -----------------------------------------------
-     		// Ayri ayri sorgular ile veritabanina tekrar tekrar ulasmak islemlerin 
-     		// yavas yapilmasina yol acar. 10000 tane veri kaydi yapildigi dusunuldugunde
-     		// bu kotu bir yaklasimdir.
-     		
-     		String [] sorgular = {"INSERT INTO bolumler VALUES(95, 'YEMEKHANE', 'ISTANBUL')",
-     		            		 "INSERT INTO bolumler VALUES(85, 'OFIS','ANKARA')",
-     		           	         "INSERT INTO bolumler VALUES(75, 'OFIS2', 'VAN')"};
-		
         
+        // 1.YONTEM
+     	// -----------------------------------------------
+     	// Ayri ayri sorgular ile veritabanina tekrar tekrar ulasmak islemlerin 
+     	// yavas yapilmasina yol acar. 10000 tane veri kaydi yapildigi dusunuldugunde
+        // bu kotu bir yaklasimdir.
+     		
+     	String [] sorgular = {"INSERT INTO bolumler VALUES(95, 'YEMEKHANE', 'ISTANBUL')",
+     		            	  "INSERT INTO bolumler VALUES(85, 'OFIS','ANKARA')",
+     		            	  "INSERT INTO bolumler VALUES(75, 'OFIS2', 'VAN')"};
+		
      	con.close();
 		st.close();
 		rs.close();
