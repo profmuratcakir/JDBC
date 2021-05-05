@@ -2,7 +2,7 @@ package techproed.jdbcExamples;
 
 import java.sql.*;
 
-public class JdbcQuery01 {
+public class Jdbc1Query01 {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException{
 		
