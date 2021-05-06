@@ -44,14 +44,4 @@ public class Urun {
 		return "id=" + id + ", isim=" + isim + ", fiyat=" + fiyat;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
